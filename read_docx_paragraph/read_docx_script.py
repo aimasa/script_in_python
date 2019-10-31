@@ -2,7 +2,7 @@ from docx import Document
 import os
 import shutil
 
-# 对需要划分进的文档名称放入字典
+# 标签内容
 dict_txt = {'1':"unknown",'2':"标题单方解除合同",
             '3':"不可抗力免责",'4':"出示证明",
             '5':"房屋面积+位置", '6':"房屋维修处理",
@@ -19,7 +19,7 @@ dict_txt = {'1':"unknown",'2':"标题单方解除合同",
             '27':"租赁期满",'28':"租赁日期"
             }
 
-# 读取docx文件条款内容，并打印出来
+# 读取docx文件分段内容，并打印出来供选择存入对应的标签
 def read_docx(contract_file_path,label_file_name_header):
     contract_document = Document(contract_file_path)
     for para in contract_document.paragraphs:
@@ -55,7 +55,7 @@ def read_dir_file(dir_file_path):
 
 # 把已经处理完的文件转移到另一个文件夹中
 def move_file_to_other_dir(contract_file_path,new_dir):
-    check_is_exit(new_dir)
+    # check_is_exit(new_dir)
     shutil.move(contract_file_path,new_dir)
 
 if __name__ == "__main__":
