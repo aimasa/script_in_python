@@ -20,8 +20,8 @@ def save_to_docx(files):
             doc.SaveAs("{}x".format(file), 12)#另存为后缀为".docx"的文件，其中参数12指docx文件
             doc.Close() #关闭原来word文件
             dele_doc(file)
-        except:
-            print("文件："+file +"转存失败")
+        except Exception as e:
+            print("文件："+file +"转存失败，失败原因：", e)
             continue
     word.Quit()
 
@@ -38,6 +38,8 @@ def run(path):
 
 
 if __name__ == "__main__":
-    path = "F:/contract/"  # 打开word文件
+    path = "G:/律师-劳动/"  # 打开word文件
+    run(path)
+    path = "G:/律师-买卖/"  # 打开word文件
     run(path)
 
